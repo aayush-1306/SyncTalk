@@ -1,0 +1,9 @@
+data/*
+model/*
+**/__pycache__/*
+*.mat
+*.pth
+*.npy
+*.obj
+*.egg-info
+**/build/*
