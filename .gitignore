@@ -7,3 +7,4 @@ model/*
 *.obj
 *.egg-info
 **/build/*
+*.wav
