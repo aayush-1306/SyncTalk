@@ -10,6 +10,7 @@ import torch.nn.functional as F
 import face_alignment
 from face_tracking.util import euler2rot
 
+os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
 
 def extract_audio(path, out_path, sample_rate=16000):
     

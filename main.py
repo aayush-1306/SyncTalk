@@ -3,6 +3,9 @@ import argparse
 from nerf_triplane.provider import NeRFDataset
 from nerf_triplane.utils import *
 from nerf_triplane.network import NeRFNetwork
+import time 
+import datetime as dt 
+import pandas as pd 
 
 # torch.autograd.set_detect_anomaly(True)
 # Close tf32 features. Fix low numerical accuracy on rtx30xx gpu.
@@ -116,7 +119,8 @@ if __name__ == '__main__':
     parser.add_argument('-l', type=int, default=10)
     parser.add_argument('-m', type=int, default=50)
     parser.add_argument('-r', type=int, default=10)
-
+    parser.add_argument('--quantize', type=int, default=1, choices=[0,1], required=False)
+    parser.add_argument('--log-path', type=str, default='/SyncTalk/quantize_log.csv')
     opt = parser.parse_args()
 
     if opt.O:
@@ -180,8 +184,6 @@ if __name__ == '__main__':
             # metrics = [PSNRMeter(), LPIPSMeter(device=device)]
             metrics = [PSNRMeter(), LPIPSMeter(device=device), LMDMeter(backend='fan')]
 
-        trainer = Trainer('ngp', opt, model, device=device, workspace=opt.workspace, criterion=criterion, fp16=opt.fp16, metrics=metrics, use_checkpoint=opt.ckpt)
-
         if opt.test_train:
             test_set = NeRFDataset(opt, device=device, type='train')
             # a manual fix to test on the training dataset
@@ -195,6 +197,16 @@ if __name__ == '__main__':
         # temp fix: for update_extra_states
         model.aud_features = test_loader._data.auds
         model.eye_areas = test_loader._data.eye_area
+
+        trainer = Trainer('ngp', opt, model, device=device, workspace=opt.workspace, criterion=criterion, fp16=opt.fp16, metrics=metrics, use_checkpoint=opt.ckpt)
+        if opt.quantize:
+            try: 
+                model = torch.quantization.quantize_dynamic(model, dtype=torch.qint8)
+                print('Successfully quantized the model')
+            except Exception as e:
+                print('Could not quantize model')
+        else:
+            print('Quantization is disabled')
 
         if opt.gui:
             from nerf_triplane.gui import NeRFGUI

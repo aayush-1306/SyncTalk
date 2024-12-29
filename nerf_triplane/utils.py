@@ -25,6 +25,8 @@ from torch_ema import ExponentialMovingAverage
 from packaging import version as pver
 import imageio
 import lpips
+import datetime as dt 
+import pandas as pd 
 
 def custom_meshgrid(*args):
     # ref: https://pytorch.org/docs/stable/generated/torch.meshgrid.html?highlight=meshgrid#torch.meshgrid
@@ -1060,7 +1062,7 @@ class Trainer(object):
         all_preds_depth = []
 
         with torch.no_grad():
-
+            start = time.time()
             for i, data in enumerate(loader):
                 
                 with torch.cuda.amp.autocast(enabled=self.fp16):
@@ -1091,7 +1093,18 @@ class Trainer(object):
                 all_preds_depth.append(pred_depth)
 
                 pbar.update(loader.batch_size)
-
+        duration = time.time()-start
+        print(f'Took {duration}s to generate results')
+        today = dt.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
+        log_data = {
+            'time':[today],
+            'quantize':[self.opt.quantize],
+            'duration':[duration],
+            'workspace':[self.opt.workspace]
+        }
+        print(log_data)
+        log_data = pd.DataFrame(log_data)
+        log_data.to_csv(self.opt.log_path, mode='a+', index=False)
         # write video
         all_preds = np.stack(all_preds, axis=0)
         all_preds_depth = np.stack(all_preds_depth, axis=0)

@@ -8,3 +8,4 @@ model/*
 *.egg-info
 **/build/*
 *.wav
+test.ipynb
