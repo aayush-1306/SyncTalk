@@ -9,3 +9,4 @@ model/*
 **/build/*
 *.wav
 test.ipynb
+quantize_log.csv
