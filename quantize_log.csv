@@ -1,3 +1,9 @@
 ﻿time (UTC),quantize,duration (s),workspace
 26-12-2024 20:50,0,739.6000097,model/trial_jabali_4/
 27-12-2024 05:00,1,717.4047246,model/trial_jabali_3
+time,quantize,duration,workspace,inference_mode,quantize_type,aud
+2025-01-02 17:30:12,1,681.7803809642792,model/trial_jabali_5,no,float16,./demo/obama_sample_mono.wav
+time,quantize,duration,workspace,inference_mode,quantize_type,aud
+2025-01-02 17:55:30,1,675.336911201477,model/trial_jabali_6,yes,float16,./demo/obama_sample_mono.wav
+time,quantize,duration,workspace,inference_mode,quantize_type,aud
+2025-01-02 18:25:19,1,675.6783783435822,model/trial_jabali_6,yes,qint8,./demo/obama_sample_mono.wav

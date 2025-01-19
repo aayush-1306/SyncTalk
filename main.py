@@ -121,6 +121,8 @@ if __name__ == '__main__':
     parser.add_argument('-r', type=int, default=10)
     parser.add_argument('--quantize', type=int, default=1, choices=[0,1], required=False)
     parser.add_argument('--log-path', type=str, default='/SyncTalk/quantize_log.csv')
+    # https://pytorch.org/docs/stable/quantization.html#quantized-model
+    parser.add_argument('--quantize-type', type=str, default='qint8', choices=['float16', 'qint8'], required=False)
     opt = parser.parse_args()
 
     if opt.O:
@@ -201,7 +203,13 @@ if __name__ == '__main__':
         trainer = Trainer('ngp', opt, model, device=device, workspace=opt.workspace, criterion=criterion, fp16=opt.fp16, metrics=metrics, use_checkpoint=opt.ckpt)
         if opt.quantize:
             try: 
-                model = torch.quantization.quantize_dynamic(model, dtype=torch.qint8)
+                if opt.quantize_type == 'float16':
+                    model = torch.quantization.quantize_dynamic(model, dtype=torch.float16)
+                    print('Successfully quantized the model using float16')
+                else:
+                    model = torch.quantization.quantize_dynamic(model, dtype=torch.qint8)   
+                    print('Successfully quantized the model using qint8')
+
                 print('Successfully quantized the model')
             except Exception as e:
                 print('Could not quantize model')

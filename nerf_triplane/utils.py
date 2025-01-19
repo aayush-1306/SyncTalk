@@ -1042,9 +1042,14 @@ class Trainer(object):
         self.use_tensorboardX = use_tensorboardX
 
     # Function to blend two images with a mask
-
+    
+    @torch.inference_mode()
     def test(self, loader, save_path=None, name=None, write_image=False):
-
+        if torch.is_inference_mode_enabled():
+            print('Inference mode is enabled')
+            inference_mode = 'yes'
+        else:
+            inference_mode = 'no'
         if save_path is None:
             save_path = os.path.join(self.workspace, 'results')
 
@@ -1100,7 +1105,10 @@ class Trainer(object):
             'time':[today],
             'quantize':[self.opt.quantize],
             'duration':[duration],
-            'workspace':[self.opt.workspace]
+            'workspace':[self.opt.workspace],
+            'inference_mode':[inference_mode],
+            'quantize_type':[self.opt.quantize_type],
+            'aud':[self.opt.aud]
         }
         print(log_data)
         log_data = pd.DataFrame(log_data)
