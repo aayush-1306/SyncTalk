@@ -120,7 +120,7 @@ if __name__ == '__main__':
     parser.add_argument('-m', type=int, default=50)
     parser.add_argument('-r', type=int, default=10)
     parser.add_argument('--quantize', type=int, default=1, choices=[0,1], required=False)
-    parser.add_argument('--log-path', type=str, default='quantize_log.csv')
+    parser.add_argument('--log-path', type=str, default=os.path.join(os.path.dirname(__file__), 'quantize_log.csv'))
     # https://pytorch.org/docs/stable/quantization.html#quantized-model
     parser.add_argument('--quantize-type', type=str, default='qint8', choices=['float16', 'qint8'], required=False)
     opt = parser.parse_args()

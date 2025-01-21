@@ -11,3 +11,4 @@ model/*
 test.ipynb
 quantize_log.csv
 time_log.txt
+test.py

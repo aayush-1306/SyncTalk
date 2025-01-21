@@ -3,6 +3,7 @@ import argparse
 from nerf_triplane.provider import NeRFDataset
 from torch.cuda import is_available
 import time 
+import os 
 
 parser = argparse.ArgumentParser()
 parser.add_argument('path', type=str)
@@ -131,7 +132,11 @@ for i, batch in enumerate(test_loader):
 end = time.time()
 
 avg_time = (end - start) / max_batch
-with open('time_log.txt', 'a+') as f:
+
+folder_name = os.path.dirname(__file__)
+file_path = os.path.join(folder_name, 'time_log.txt')
+
+with open(file_path, 'a+') as f:
     f.write(f'Average time for each batch: {avg_time} from {opt.path}\n')
 
 print(f'Took {avg_time}s to load single batch from {opt.path}')
