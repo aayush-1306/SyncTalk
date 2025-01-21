@@ -10,3 +10,4 @@ model/*
 *.wav
 test.ipynb
 quantize_log.csv
+time_log.txt
