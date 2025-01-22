@@ -27,25 +27,25 @@ if __name__ == '__main__':
     parser.add_argument('--seed', type=int, default=0)
     parser.add_argument('--ckpt', type=str, default='latest')
 
-    # ### training options
-    # parser.add_argument('--iters', type=int, default=200000, help="training iters")
-    # parser.add_argument('--lr', type=float, default=1e-2, help="initial learning rate")
-    # parser.add_argument('--lr_net', type=float, default=1e-3, help="initial learning rate")
-    # parser.add_argument('--num_rays', type=int, default=4096 * 16, help="num rays sampled per image for each training step")
-    # parser.add_argument('--cuda_ray', action='store_true', help="use CUDA raymarching instead of pytorch")
-    # parser.add_argument('--max_steps', type=int, default=16, help="max num steps sampled per ray (only valid when using --cuda_ray)")
-    # parser.add_argument('--num_steps', type=int, default=16, help="num steps sampled per ray (only valid when NOT using --cuda_ray)")
-    # parser.add_argument('--upsample_steps', type=int, default=0, help="num steps up-sampled per ray (only valid when NOT using --cuda_ray)")
-    # parser.add_argument('--update_extra_interval', type=int, default=16, help="iter interval to update extra status (only valid when using --cuda_ray)")
-    # parser.add_argument('--max_ray_batch', type=int, default=4096, help="batch size of rays at inference to avoid OOM (only valid when NOT using --cuda_ray)")
+    ### training options
+    parser.add_argument('--iters', type=int, default=200000, help="training iters")
+    parser.add_argument('--lr', type=float, default=1e-2, help="initial learning rate")
+    parser.add_argument('--lr_net', type=float, default=1e-3, help="initial learning rate")
+    parser.add_argument('--num_rays', type=int, default=4096 * 16, help="num rays sampled per image for each training step")
+    parser.add_argument('--cuda_ray', action='store_true', help="use CUDA raymarching instead of pytorch")
+    parser.add_argument('--max_steps', type=int, default=16, help="max num steps sampled per ray (only valid when using --cuda_ray)")
+    parser.add_argument('--num_steps', type=int, default=16, help="num steps sampled per ray (only valid when NOT using --cuda_ray)")
+    parser.add_argument('--upsample_steps', type=int, default=0, help="num steps up-sampled per ray (only valid when NOT using --cuda_ray)")
+    parser.add_argument('--update_extra_interval', type=int, default=16, help="iter interval to update extra status (only valid when using --cuda_ray)")
+    parser.add_argument('--max_ray_batch', type=int, default=4096, help="batch size of rays at inference to avoid OOM (only valid when NOT using --cuda_ray)")
 
-    ### loss set
-    # parser.add_argument('--warmup_step', type=int, default=10000, help="warm up steps")
-    # parser.add_argument('--amb_aud_loss', type=int, default=1, help="use ambient aud loss")
-    # parser.add_argument('--amb_eye_loss', type=int, default=1, help="use ambient eye loss")
-    # parser.add_argument('--unc_loss', type=int, default=1, help="use uncertainty loss")
-    # parser.add_argument('--lambda_amb', type=float, default=1e-4, help="lambda for ambient loss")
-    # parser.add_argument('--pyramid_loss', type=int, default=0, help="use perceptual loss")
+    ## loss set
+    parser.add_argument('--warmup_step', type=int, default=10000, help="warm up steps")
+    parser.add_argument('--amb_aud_loss', type=int, default=1, help="use ambient aud loss")
+    parser.add_argument('--amb_eye_loss', type=int, default=1, help="use ambient eye loss")
+    parser.add_argument('--unc_loss', type=int, default=1, help="use uncertainty loss")
+    parser.add_argument('--lambda_amb', type=float, default=1e-4, help="lambda for ambient loss")
+    parser.add_argument('--pyramid_loss', type=int, default=0, help="use perceptual loss")
 
     ### network backbone options
     parser.add_argument('--fp16', action='store_true', help="use amp mixed precision training")
