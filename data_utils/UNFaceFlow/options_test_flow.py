@@ -1,9 +1,10 @@
 # ref:https://github.com/ShunyuYao/DFA-NeRF
 import argparse
 class BaseOptions():
-    def __init__(self):
+    def __init__(self, resolution=512):
         self.parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
         self.initialized = False
+        self.resolution = resolution
 
     def initialize(self):
         # self.parser.add_argument('--model_save_path', type=str, default='snapshot/small_filter_wo_ct_wi_bn/real_data/combine/', help='path')
@@ -29,8 +30,8 @@ class BaseOptions():
         self.parser.add_argument('--num_adja', type=int, default=6, help='number of nodes who affect a point')
         self.parser.add_argument('--num_corres', type=int, default=20000, help='number of corres')
         self.parser.add_argument('--iter_num', type=int, default=3, help='GN iter num')
-        self.parser.add_argument('--width', type=int, default=512, help='image width')#480
-        self.parser.add_argument('--height', type=int, default=512, help='image height')#640
+        self.parser.add_argument('--width', type=int, default=self.resolution, help='image width')#480
+        self.parser.add_argument('--height', type=int, default=self.resolution, help='image height')#640
         self.parser.add_argument('--crop_width', type=int, default=240, help='image width')
         self.parser.add_argument('--crop_height', type=int, default=320, help='image height')
         self.parser.add_argument('--max_num_edges', type=int, default=30000, help='number of edges')

@@ -1070,7 +1070,7 @@ class Trainer(object):
             start = time.time()
             for i, data in enumerate(loader):
                 
-                with torch.cuda.amp.autocast(enabled=self.fp16):
+                with torch.autocast('cuda', enabled=self.fp16):
                     preds, preds_depth = self.test_step(data)                
                 
                 path = os.path.join(save_path, f'{name}_{i:04d}_rgb.png')

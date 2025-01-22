@@ -11,3 +11,7 @@ time,quantize,duration,workspace,inference_mode,quantize_type,aud
 2025-01-22 06:19:54,1,977.520555973053,/SyncTalk/avatars/jason/model,yes,qint8,/SyncTalk/demo/obama_sample_mono.wav
 time,quantize,duration,workspace,inference_mode,quantize_type,aud
 2025-01-22 10:05:44,1,1202.2790355682373,/SyncTalk/avatars/jason/model,yes,qint8,/SyncTalk/demo/obama_sample_mono.wav
+time,quantize,duration,workspace,inference_mode,quantize_type,aud
+2025-01-22 17:43:39,1,12.90797734260559,model/trial_maria4/,yes,qint8,
+time,quantize,duration,workspace,inference_mode,quantize_type,aud
+2025-01-22 17:48:43,1,174.32958698272705,model/trial_maria4/,yes,qint8,./demo/test.wav

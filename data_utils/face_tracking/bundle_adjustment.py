@@ -13,8 +13,8 @@ parser = argparse.ArgumentParser()
 
 parser.add_argument(
     "--path", type=str, default="", help="idname of target person")
-parser.add_argument('--img_h', type=int, default=512, help='height if image')
-parser.add_argument('--img_w', type=int, default=512, help='width of image')
+parser.add_argument('--img_h', type=int, default=1024, help='height if image')
+parser.add_argument('--img_w', type=int, default=1024, help='width of image')
 args = parser.parse_args()
 id_dir = args.path
 
