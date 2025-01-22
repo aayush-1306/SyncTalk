@@ -7,3 +7,7 @@ time,quantize,duration,workspace,inference_mode,quantize_type,aud
 2025-01-02 17:55:30,1,675.336911201477,model/trial_jabali_6,yes,float16,./demo/obama_sample_mono.wav
 time,quantize,duration,workspace,inference_mode,quantize_type,aud
 2025-01-02 18:25:19,1,675.6783783435822,model/trial_jabali_6,yes,qint8,./demo/obama_sample_mono.wav
+time,quantize,duration,workspace,inference_mode,quantize_type,aud
+2025-01-22 06:19:54,1,977.520555973053,/SyncTalk/avatars/jason/model,yes,qint8,/SyncTalk/demo/obama_sample_mono.wav
+time,quantize,duration,workspace,inference_mode,quantize_type,aud
+2025-01-22 10:05:44,1,1202.2790355682373,/SyncTalk/avatars/jason/model,yes,qint8,/SyncTalk/demo/obama_sample_mono.wav
