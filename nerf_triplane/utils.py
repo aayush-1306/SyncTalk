@@ -244,7 +244,7 @@ def convert_poses(poses):
     out[:, 3:] = poses[:, :3, 3]
     return out
 
-@torch.cuda.amp.autocast(enabled=False)
+@torch.amp.autocast('cuda',enabled=False)
 def get_bg_coords(H, W, device):
     X = torch.arange(H, device=device) / (H - 1) * 2 - 1 # in [-1, 1]
     Y = torch.arange(W, device=device) / (W - 1) * 2 - 1 # in [-1, 1]

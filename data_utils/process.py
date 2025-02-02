@@ -42,6 +42,9 @@ def extract_images(path, out_path, fps=25):
 
 
 def extract_semantics(ori_imgs_dir, parsing_dir):
+    """
+    Perform segmentation to extract head/torso/neck/background 
+    """
 
     print(f'[INFO] ===== extract semantics from {ori_imgs_dir} to {parsing_dir} =====')
     cmd = f'python3 data_utils/face_parsing/test.py --respath={parsing_dir} --imgpath={ori_imgs_dir}'
@@ -50,6 +53,9 @@ def extract_semantics(ori_imgs_dir, parsing_dir):
 
 
 def extract_landmarks(ori_imgs_dir):
+    """
+    Extract facial landmarks using face_alignment
+    """
 
     print(f'[INFO] ===== extract face landmarks from {ori_imgs_dir} =====')
     try:

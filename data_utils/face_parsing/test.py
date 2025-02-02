@@ -67,13 +67,13 @@ def vis_parsing_maps(im, parsing_anno, stride, save_im=False, save_path='vis_res
     bottom_face_coords = sorted_face_coords[uid] + np.array([pad, 0])
     rows, cols, _ = vis_parsing_anno_color_face.shape
 
-    # 为了保证新的坐标在图片范围内
+    # To ensure that the new coordinates are within the image range
     bottom_face_coords[:, 0] = np.clip(bottom_face_coords[:, 0], 0, rows - 1)
 
     y_min = np.min(bottom_face_coords[:, 1])
     y_max = np.max(bottom_face_coords[:, 1])
 
-    # 计算1和2部分的开始和结束位置
+    # Calculate the start and end positions of parts 1 and 2
     y_range = y_max - y_min
     height_per_part = y_range // 4
 
@@ -125,17 +125,17 @@ def evaluate(respth='./res/test_res', dspth='./data', cp='model_final_diss.pth')
             if image_path.endswith('.jpg') or image_path.endswith('.png'):
                 img = Image.open(osp.join(dspth, image_path))
                 ori_size = img.size
-                image = img.resize((512, 512), Image.BILINEAR)
+                image = img.resize((512, 512), Image.BILINEAR) # Need to change this
                 image = image.convert("RGB")
                 img = to_tensor(image)
 
                 # test-time augmentation.
-                inputs = torch.unsqueeze(img, 0) # [1, 3, 512, 512]
+                inputs = torch.unsqueeze(img, 0) # [1, 3, 512, 512], now [1,3,1024,1024]
                 outputs = net(inputs.cuda())
                 parsing = outputs.mean(0).cpu().numpy().argmax(0)
                 image_path = int(image_path[:-4])
                 image_path = str(image_path) + '.png'
-
+                # Size is changed when we save the image in the data folder which is why we see 1024x1024 images in the result folder
                 vis_parsing_maps(image, parsing, stride=1, save_im=True, save_path=osp.join(respth, image_path), img_size=ori_size)
 
 

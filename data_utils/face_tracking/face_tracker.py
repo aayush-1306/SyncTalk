@@ -23,6 +23,7 @@ def set_requires_grad(tensor_list):
 parser = argparse.ArgumentParser()
 parser.add_argument(
     "--path", type=str, default="obama/ori_imgs", help="idname of target person")
+# Need to change here
 parser.add_argument('--img_h', type=int, default=512, help='image height')
 parser.add_argument('--img_w', type=int, default=512, help='image width')
 parser.add_argument('--frame_num', type=int,

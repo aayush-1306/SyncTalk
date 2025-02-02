@@ -343,7 +343,7 @@ class NeRFDataset:
                 aud = aud_features[min(f['aud_id'], aud_features.shape[0] - 1)] # careful for the last frame...
                 self.auds.append(aud)
 
-            # load lms and extract face
+            # load landmarks and extract face
             lms = np.loadtxt(os.path.join(self.root_path, 'ori_imgs', str(f['img_id']) + '.lms')) # [68, 2]
 
             lh_xmin, lh_xmax = int(lms[31:36, 1].min()), int(lms[:, 1].max()) # actually lower half area

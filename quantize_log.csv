@@ -15,3 +15,17 @@ time,quantize,duration,workspace,inference_mode,quantize_type,aud
 2025-01-22 17:43:39,1,12.90797734260559,model/trial_maria4/,yes,qint8,
 time,quantize,duration,workspace,inference_mode,quantize_type,aud
 2025-01-22 17:48:43,1,174.32958698272705,model/trial_maria4/,yes,qint8,./demo/test.wav
+time,quantize,duration,workspace,inference_mode,quantize_type,aud
+2025-01-23 10:41:27,1,12.779129981994629,model/trial_maria5,yes,qint8,
+time,quantize,duration,workspace,inference_mode,quantize_type,aud
+2025-01-23 10:52:07,1,167.39881896972656,model/trial_maria5,yes,qint8,./demo/test.wav
+time,quantize,duration,workspace,inference_mode,quantize_type,aud
+2025-01-23 11:00:20,1,168.99927759170532,model/trial_maria5,yes,qint8,./demo/test_mono.wav
+time,quantize,duration,workspace,inference_mode,quantize_type,aud
+2025-01-23 12:08:01,1,13.797836780548096,model/trial_maria6,yes,qint8,
+time,quantize,duration,workspace,inference_mode,quantize_type,aud
+2025-01-23 12:38:35,1,167.7777807712555,model/trial_maria6,yes,qint8,./demo/test_mono.wav
+time,quantize,duration,workspace,inference_mode,quantize_type,aud
+2025-01-23 21:43:45,1,52.05169224739075,model/trial_jason,yes,qint8,
+time,quantize,duration,workspace,inference_mode,quantize_type,aud
+2025-01-24 03:57:08,1,82.94972324371338,model/trial_jason/,yes,qint8,./demo/test.wav
